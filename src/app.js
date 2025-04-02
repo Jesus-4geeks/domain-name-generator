@@ -5,24 +5,28 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-function partGenerator(variable) {
-  let randInt = Math.floor(Math.random() * variable.length);
-  return variable[randInt] + ' ';
-}
-
 window.onload = function() {
   //write your code here
-  let who = ['The dog', 'My grandma', 'The mailman', 'My bird'];
-  let action = ['ate', 'peed', 'crushed', 'broke'];
-  let what = ['my homework', 'my phone', 'the car'];
-  let when = ['before the class', 'when I was sleeping', 'while I was exercising', 'during my lunch', 'while I was praying'];
+  let pronoun = ['the', 'our'];
+  let adj = ['great', 'big'];
+  let noun = ['jogger', 'racoon'];
+  let extensions = ['com', 'net', 'us', 'io'];
 
-  let excuse = "";
+  let domainNames = [];
 
-  excuse += partGenerator(who);
-  excuse += partGenerator(action);
-  excuse += partGenerator(what);
-  excuse += partGenerator(when);
+  for (let p in pronoun) {
+    for (let a in adj) {
+      for (let n in noun) {
+        domainNames.push(pronoun[p] + adj[a] + '.' + noun[n]);
+
+        for (let ext in extensions) {
+          domainNames.push(pronoun[p] + adj[a] + noun[n] + '.' + extensions[ext]);
+        }
+      }
+    }
+  }
   
-  document.getElementById("excuse").innerHTML = excuse.trim();
+  for (let elem in domainNames) {
+    console.log(domainNames[elem]);
+  }
 };

@@ -1,32 +1,22 @@
-import "bootstrap";
-import "./style.css";
+let pronouns = ['the', 'our'];
+let adjectives = ['great', 'big'];
+let nouns = ['jogger', 'racoon'];
+let extensions = ['com', 'net', 'us', 'io'];
 
+let domainNames = [];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+for (let pronoun of pronouns) {
+  for (let adjective of adjectives) {
+    for (let noun of nouns) {
+      domainNames.push(pronoun + adjective + '.' + noun);
 
-window.onload = function() {
-  //write your code here
-  let pronoun = ['the', 'our'];
-  let adj = ['great', 'big'];
-  let noun = ['jogger', 'racoon'];
-  let extensions = ['com', 'net', 'us', 'io'];
-
-  let domainNames = [];
-
-  for (let p in pronoun) {
-    for (let a in adj) {
-      for (let n in noun) {
-        domainNames.push(pronoun[p] + adj[a] + '.' + noun[n]);
-
-        for (let ext in extensions) {
-          domainNames.push(pronoun[p] + adj[a] + noun[n] + '.' + extensions[ext]);
-        }
+      for (let extension of extensions) {
+        domainNames.push(pronoun + adjective + noun + '.' + extension);
       }
     }
   }
-  
-  for (let elem in domainNames) {
-    console.log(domainNames[elem]);
-  }
-};
+}
+
+for (let domain of domainNames) {
+  console.log(domain);
+}
